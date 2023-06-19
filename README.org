@@ -1,0 +1,17 @@
+So yeah, it is somewhat stupid, but I just want to try it.
+
+goals / features / ...
+- ANSI tests ([[https://gitlab.common-lisp.net/ansi-test/ansi-test][here]]).
+- Running on a vm? Or maybe not?
+  - But WebAssembly would be cool.
+- Threads
+  - And maybe green threads too / instead
+- ASDF / UIOP / CFFI / BORDEAUX-THREADS / ATOMICS / CLOSER-MOP
+  - Well, [[http://portability.cl/][portability layers]].
+    - PLN, symbol-links
+- Tree shaker?
+- Different / good GC's?
+
+What do I do? I don't know.
+
+What do I know? I don't do.
