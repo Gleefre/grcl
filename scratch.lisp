@@ -44,3 +44,7 @@
 ;; FIXME: should use @nil and @()
 (defun @make-symbol (name)
   (make-instance '@symbol :name name :package nil :plist ()))
+
+;;; The following section implements GRCL packages.
+
+(def/class/ @package (name nicknames use-list internal-symbols external-symbols shadowing-symbols))
