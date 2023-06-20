@@ -35,8 +35,6 @@
 
 (defconstant /+keyword+/ (make-instance '@package :name "KEYWORD"))
 (defconstant /+cl+/ (make-instance '@package :name "CL"))
-(defconstant @nil (make-instance '@symbol :name "NIL" :package /+cl+/))
-(setf (/symbol-value/ @nil) @nil (/symbol-plist/ @nil) @nil)
 
 (defun @symbolp (thing)
   (typep thing '@symbol))
@@ -48,11 +46,5 @@
 (deftype @keyword () '(and @symbol (satisfies @keywordp)))
 
 (defun @make-symbol (name)
-  (make-instance '@symbol :name name :package @nil :plist (@list)))
+  (make-instance '@symbol :name name :package nil :plist ()))
 
-;;; The following section implements GRCL conses.
-
-(def/class/ @cons (car cdr))
-
-(defun @cons (one another)
-  (make-instance '@cons :car one :cdr another))
