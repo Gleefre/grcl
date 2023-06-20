@@ -32,3 +32,12 @@
 ;;; The following section implements GRCL symbols.
 
 (def/class/ @symbol (name package value plist))
+
+(defun @symbolp (thing)
+  (typep thing '@symbol))
+
+(defun @keywordp (symbol)
+  (and (@symbolp symbol)
+       (eq (/symbol-package/ symbol) /+keyword+/)))
+
+(deftype @keyword '(and symbol (satisfies keywordp)))
