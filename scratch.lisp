@@ -28,3 +28,7 @@
                   `(,slot :initarg ,(intern (symbol-name slot) "KEYWORD")
                           :accessor ,(intern (format nil "/~A-~A/" name slot))))
                 slots))))
+
+;;; The following section implements GRCL symbols.
+
+(def/class/ @symbol (name package value plist))
