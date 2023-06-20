@@ -20,3 +20,11 @@
     (intern (symbol-name symbol) "GRCL")))
 
 (set-macro-character #\@ #'|@-reader|)
+
+;; def/class/ automatically defines :initarg and :accessor for each slot
+(defmacro def/class/ (name slots)
+  `(defclass ,name ()
+     (,@(mapcar (lambda (slot)
+                  `(,slot :initarg ,(intern (symbol-name slot) "KEYWORD")
+                          :accessor ,(intern (format nil "/~A-~A/" name slot))))
+                slots))))
