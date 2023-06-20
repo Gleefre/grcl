@@ -15,9 +15,8 @@
 ;; @foo is used to read symbols in #:grcl package
 (defun |@-reader| (stream char)
   (declare (ignore char))
-  (let ((symbol (read stream t nil t)))
-    (check-type symbol symbol)
-    (intern (symbol-name symbol) "GRCL")))
+  (let ((*package* (find-package '#:grcl)))
+    (read stream t nil t)))
 
 (set-macro-character #\@ #'|@-reader|)
 
