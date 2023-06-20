@@ -49,3 +49,10 @@
 
 (defun @make-symbol (name)
   (make-instance '@symbol :name name :package @nil :plist (@list)))
+
+;;; The following section implements GRCL conses.
+
+(def/class/ @cons (car cdr))
+
+(defun @cons (one another)
+  (make-instance '@cons :car one :cdr another))
