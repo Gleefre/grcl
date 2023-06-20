@@ -47,6 +47,5 @@
 
 (deftype @keyword '(and symbol (satisfies keywordp)))
 
-;; FIXME: should use @nil and @()
 (defun @make-symbol (name)
-  (make-instance '@symbol :name name :package nil :plist ()))
+  (make-instance '@symbol :name name :package @nil :plist (@list)))
