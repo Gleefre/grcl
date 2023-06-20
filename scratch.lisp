@@ -41,3 +41,6 @@
        (eq (/symbol-package/ symbol) /+keyword+/)))
 
 (deftype @keyword '(and symbol (satisfies keywordp)))
+
+(defun @make-symbol (name)
+  (make-instance '@symbol :name name :package nil :plist ()))
