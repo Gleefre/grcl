@@ -31,7 +31,7 @@
 
 ;;; The following section implements GRCL symbols.
 
-(def/class/ @symbol (name package value plist))
+(def/class/ @symbol (name function package value plist))
 
 (defun @symbolp (thing)
   (typep thing '@symbol))
