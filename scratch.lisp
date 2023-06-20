@@ -28,9 +28,15 @@
                           :accessor ,(intern (format nil "/~A-~A/" name slot))))
                 slots))))
 
-;;; The following section implements GRCL symbols.
+;;; The following section implements GRCL symbols and packages.
 
 (def/class/ @symbol (name function package value plist))
+(def/class/ @package (name nicknames use-list internal-symbols external-symbols shadowing-symbols))
+
+(defconstant /+keyword+/ (make-instance '@package :name "KEYWORD"))
+(defconstant /+cl+/ (make-instance '@package :name "CL"))
+(defconstant @nil (make-instance '@symbol :name "NIL" :package /+cl+/))
+(setf (/symbol-value/ @nil) @nil (/symbol-plist/ @nil) @nil)
 
 (defun @symbolp (thing)
   (typep thing '@symbol))
@@ -44,7 +50,3 @@
 ;; FIXME: should use @nil and @()
 (defun @make-symbol (name)
   (make-instance '@symbol :name name :package nil :plist ()))
-
-;;; The following section implements GRCL packages.
-
-(def/class/ @package (name nicknames use-list internal-symbols external-symbols shadowing-symbols))
