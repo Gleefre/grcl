@@ -55,7 +55,7 @@
   (/symbol-package/ symbol))
 
 (defun @copy-symbol (symbol &optional copy-properties-p)
-  (let ((new-symbol (make-instance 'symbol :name (/symbol-name/ symbol) :package nil :plist ())))
+  (let ((new-symbol (make-instance '@symbol :name (/symbol-name/ symbol) :package nil :plist ())))
     (when copy-properties-p
       (when (@boundp symbol)
         (setf (@symbol-value new-symbol) (@symbol-value symbol)))
