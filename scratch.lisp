@@ -64,3 +64,17 @@
 
 (defun (setf @symbol-value) (value symbol)
   (set symbol value))
+
+;; Symbol function
+
+(defun @fboundp (symbol)
+  (slot-boundp symbol 'function))
+
+(defun @fmakeunbound (symbol)
+  (slot-makunbound symbol 'value))
+
+(defun @symbol-function (symbol)
+  (/symbol-function/ symbol))
+
+(defun (setf @symbol-function) (value symbol)
+  (setf (/symbol-function/ symbol) value))
