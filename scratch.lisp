@@ -48,6 +48,12 @@
 (defun @make-symbol (name)
   (make-instance '@symbol :name name :package nil :plist ()))
 
+(defun @symbol-name (symbol)
+  (/symbol-name/ symbol))
+
+(defun @symbol-package (symbol)
+  (/symbol-package/ symbol))
+
 ;; Symbol value
 
 (defun @boundp (symbol)
