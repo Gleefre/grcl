@@ -127,5 +127,5 @@
 (defun @packagep (thing)
   (typep thing '@package))
 
-(defparameter /*packages*/ (make-hash-table :test #'string))
+(defparameter /*packages*/ (make-hash-table :test #'equal))
 (defparameter @*package* /+cl-user+/)
