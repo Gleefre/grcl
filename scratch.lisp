@@ -35,6 +35,7 @@
 
 (defconstant /+keyword+/ (make-instance '@package :name "KEYWORD"))
 (defconstant /+cl+/ (make-instance '@package :name "CL"))
+(defconstant /+cl-user+/ (make-instance '@package :name "CL-USER"))
 
 (defun @symbolp (thing)
   (typep thing '@symbol))
@@ -120,3 +121,11 @@
 
 (defun @remprop (symbol indicator)
   (remf (@symbol-plist symbol) indicator))
+
+;; Packages stuff
+
+(defun @packagep (thing)
+  (typep thing '@package))
+
+(defparameter /*packages*/ (make-hash-table :test #'string))
+(defparameter @*package* /+cl-user+/)
