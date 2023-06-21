@@ -136,3 +136,13 @@
 (/register-package/ /+keyword+/)
 (/register-package/ /+cl+/)
 (/register-package/ /+cl-user+/)
+
+(defun @string (thing)
+  (if (@symbolp thing)
+      (@symbol-name thing)
+      (string thing)))
+
+(defun @find-package (designator)
+  (if (@packagep designator)
+      designator
+      (nth-value 0 (gethash (@string designator) /*packages*/))))
