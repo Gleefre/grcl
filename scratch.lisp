@@ -54,6 +54,16 @@
 (defun @symbol-package (symbol)
   (/symbol-package/ symbol))
 
+(defun @copy-symbol (symbol &optional copy-properties-p)
+  (let ((new-symbol (make-instance 'symbol :name (/symbol-name/ symbol) :package nil :plist ())))
+    (when copy-properties-p
+      (when (@boundp symbol)
+        (setf (@symbol-value new-symbol) (@symbol-value symbol)))
+      (when (@fboundp symbol)
+        (setf (@symbol-function new-symbol) (@symbol-function symbol)))
+      (setf (@symbol-plist new-symbol) (copy-list (@symbol-plist new-symbol))))
+    new-symbol))
+
 ;; Symbol value
 
 (defun @boundp (symbol)
