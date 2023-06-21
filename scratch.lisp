@@ -35,7 +35,7 @@
 
 (defconstant /+keyword+/ (make-instance '@package :name "KEYWORD"))
 (defconstant /+cl+/ (make-instance '@package :name "COMMON-LISP" :nicknames '("CL")))
-(defconstant /+cl-user+/ (make-instance '@package :name "COMMON-LISP-USER" '("CL-USER")))
+(defconstant /+cl-user+/ (make-instance '@package :name "COMMON-LISP-USER" :nicknames '("CL-USER")))
 
 (defun @symbolp (thing)
   (typep thing '@symbol))
