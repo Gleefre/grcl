@@ -64,6 +64,15 @@
       (setf (@symbol-plist new-symbol) (copy-list (@symbol-plist new-symbol))))
     new-symbol))
 
+;; Gensym [ don't implement deprecated int parameter ]
+
+(defparameter @*gensym-counter* 0)
+
+(defun @gensym (&optional (x "G"))
+  (with-standard-io-syntax
+    (prog1 (@make-symbol (format nil "~a~a" x @*gensym-counter*))
+      (incf @*gensym-counter*))))
+
 ;; Symbol value
 
 (defun @boundp (symbol)
