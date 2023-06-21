@@ -34,8 +34,8 @@
 (def/class/ @package (name nicknames use-list internal-symbols external-symbols shadowing-symbols))
 
 (defconstant /+keyword+/ (make-instance '@package :name "KEYWORD"))
-(defconstant /+cl+/ (make-instance '@package :name "CL"))
-(defconstant /+cl-user+/ (make-instance '@package :name "CL-USER"))
+(defconstant /+cl+/ (make-instance '@package :name "COMMON-LISP" :nicknames '("CL")))
+(defconstant /+cl-user+/ (make-instance '@package :name "COMMON-LISP-USER" '("CL-USER")))
 
 (defun @symbolp (thing)
   (typep thing '@symbol))
