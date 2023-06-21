@@ -129,3 +129,10 @@
 
 (defparameter /*packages*/ (make-hash-table :test #'equal))
 (defparameter @*package* /+cl-user+/)
+
+(defun /register-package/ (package)
+  (setf (gethash (/package-name/ package) /*packages*/) package))
+
+(/register-package/ /+keyword+/)
+(/register-package/ /+cl+/)
+(/register-package/ /+cl-user+/)
