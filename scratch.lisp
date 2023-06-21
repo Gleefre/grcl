@@ -78,3 +78,20 @@
 
 (defun (setf @symbol-function) (value symbol)
   (setf (/symbol-function/ symbol) value))
+
+;; Symbol plist
+
+(defun @symbol-plist (symbol)
+  (/symbol-plist/ symbol))
+
+(defun (setf @symbol-plist) (value symbol)
+  (setf (/symbol-plist/ symbol) value))
+
+(defun @get (symbol indicator &optional default)
+  (getf (@symbol-plist symbol) indicator default))
+
+(defun (setf @get) (value symbol indicator &optional default)
+  (setf (getf (@symbol-plist symbol) indicator default) value))
+
+(defun @remprop (symbol indicator)
+  (remf (@symbol-plist symbol) indicator))
