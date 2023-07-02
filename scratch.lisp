@@ -31,7 +31,7 @@
 ;;; The following section implements GRCL symbols and packages.
 
 (def/class/ @symbol (name function package value plist))
-(def/class/ @package (name nicknames use-list internal-symbols external-symbols shadowing-symbols))
+(def/class/ @package (name nicknames use-list used-by-list internal-symbols external-symbols shadowing-symbols))
 
 (defconstant /+keyword+/ (make-instance '@package :name "KEYWORD"))
 (defconstant /+cl+/ (make-instance '@package :name "COMMON-LISP" :nicknames '("CL")))
@@ -146,3 +146,20 @@
   (if (@packagep designator)
       designator
       (nth-value 0 (gethash (@string designator) /*packages*/))))
+
+;; Readers [ name, nicknames, shadowing-symbols, use-list, used-by-list ]
+
+(defun @package-name (package)
+  (/package-name/ package))
+
+(defun @package-nicknames (package)
+  (/package-nicknames/ package))
+
+(defun @package-shadowing-symbols (package)
+  (/package-shadowing-symbols/ package))
+
+(defun @package-use-list (package)
+  (/package-use-list/ package))
+
+(defun @package-used-by-list (package)
+  (/package-used-by-list/ package))
