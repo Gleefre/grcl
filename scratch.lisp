@@ -163,3 +163,9 @@
 
 (defun @package-used-by-list (package)
   (/package-used-by-list/ package))
+
+;; package error
+
+(define-condition @package-error (error)
+  ((package :reader @package-error-package)))
+
