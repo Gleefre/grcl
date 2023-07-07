@@ -1,0 +1,28 @@
+Host:
+  - Simplified external package system  [ + initial layout ]
+  - Compiler [ CL ]     ^ should use that
+    Needs to know:
+    - how to generate bytecode
+    - how to store simple objects:
+      - number
+      - cons, vector/array, string [ ascii string ], hashtable/hashset
+    - Also deal with macros [ must be grcl's macros ]
+  - Reader
+    - look up symbols in simplified packages,
+    - grcl's backquote
+  --> read grcl's code in, compile to bytecode, save as a core
+      including:
+      - compiler
+      - reader
+      - internal package system
+      - CLOS
+      - conditions
+      - printer
+      - environments...
+      - lib
+        - streams
+        - conses & lists
+        - strings, chars & unicode
+        - sequences
+        - macros
+        - files, filenames
